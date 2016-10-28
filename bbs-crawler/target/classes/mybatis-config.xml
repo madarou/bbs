@@ -13,7 +13,7 @@
         <property name="url" value="jdbc:mysql://112.124.125.236:3306/bbs?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>
          -->
         <property name="username" value="root"/>
-        <property name="password" value="Aa111111"/>
+        <property name="password" value="660419"/>
         <!--
         <property name="password" value="1234"/>
          -->
@@ -21,7 +21,7 @@
     </environment>
   </environments>
   <mappers>
-  	<mapper resource="bbs/xml/Single.xml"/>
-  	<mapper resource="bbs/xml/Jobs.xml"/>
+  	<mapper resource="com/makao/bbs_crawler/xml/Single.xml"/>
+  	<mapper resource="com/makao/bbs_crawler/xml/Jobs.xml"/>
   </mappers>
 </configuration>

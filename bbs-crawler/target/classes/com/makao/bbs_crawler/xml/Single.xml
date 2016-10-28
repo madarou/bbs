@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="bbs.mapper.SingleMapper">
+<mapper namespace="com.makao.bbs_crawler.mapper.SingleMapper">
   <insert id="addMessage" parameterType="Map">
   	INSERT INTO single(ID,SOURCE,TITLE,CONTENT,PIC_TAG,TIME,TYPE)
   	VALUES(#{id},#{source},#{title},#{content},#{pic_tag},#{time},#{type})

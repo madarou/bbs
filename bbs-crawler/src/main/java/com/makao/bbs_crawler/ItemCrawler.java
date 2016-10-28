@@ -42,6 +42,12 @@ public abstract class ItemCrawler implements Runnable
     this.bbsUrlXml = bbsUrlXml;
   }
   
+  public ItemCrawler(Queue<ArticleInfo> queue, String bbsUrlXml, boolean ssl) {
+	    this.cralwer = new Crawler(ssl);
+	    this.queue = queue;
+	    this.bbsUrlXml = bbsUrlXml;
+  }
+  
   public HttpClient getHttpClient() {
     return this.cralwer.getHttpClient();
   }

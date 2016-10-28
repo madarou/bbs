@@ -59,14 +59,22 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
 		    <artifactId>httpcore</artifactId>
 		    <version>4.2.4</version>
+		    <scope>provided</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
 		    <artifactId>httpmime</artifactId>
 		    <version>4.3.3</version>
+		    <scope>provided</scope>
 		</dependency>
 		
 		<dependency>
@@ -117,5 +125,31 @@
 		    <artifactId>htmlunit</artifactId>
 		    <version>2.15</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.30</version>
+		</dependency>
   </dependencies>
+  
+  	<build>  
+        <finalName>bbs_crawler</finalName>  
+        <plugins>  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-jar-plugin</artifactId>  
+                <version>2.4</version>  
+                <configuration>  
+                    <archive>  
+                        <manifest>  
+                            <addClasspath>true</addClasspath>  
+                            <classpathPrefix>lib/</classpathPrefix>  
+                            <mainClass>com.makao.bbs_crawler.startup.Main</mainClass>  
+                        </manifest>  
+                    </archive>  
+                </configuration>  
+            </plugin>  
+        </plugins>  
+    </build>  
 </project>

@@ -22,7 +22,20 @@ public class Crawler
   private Logger log = Logger.getLogger(Crawler.class);
   private HttpClient httpclient;
   
-  public Crawler() { this.httpclient = new DefaultHttpClient(new ThreadSafeClientConnManager());
+  public Crawler() { 
+	  this.httpclient = new DefaultHttpClient(new ThreadSafeClientConnManager());
+    if (Configure.configure.getUseproxy().equals("true")) {
+      HttpHost host = new HttpHost(Configure.configure.getProxy(), Configure.configure.getPort(), "http");
+      this.httpclient.getParams().setParameter("http.route.default-proxy", host);
+    }
+    this.httpclient.getParams().setParameter("http.connection.timeout", Integer.valueOf(60000));
+    this.httpclient.getParams().setParameter("http.socket.timeout", Integer.valueOf(60000));
+    this.httpclient.getParams().setParameter("http.protocol.cookie-policy", "best-match");
+  }
+  
+  public Crawler(boolean ssl) { 
+	  //this.httpclient = new DefaultHttpClient(new ThreadSafeClientConnManager());
+	  this.httpclient = WebClientDevWrapper.wrapClient(new DefaultHttpClient(new ThreadSafeClientConnManager()));  
     if (Configure.configure.getUseproxy().equals("true")) {
       HttpHost host = new HttpHost(Configure.configure.getProxy(), Configure.configure.getPort(), "http");
       this.httpclient.getParams().setParameter("http.route.default-proxy", host);

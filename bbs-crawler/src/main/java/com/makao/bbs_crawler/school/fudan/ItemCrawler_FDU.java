@@ -23,7 +23,7 @@ public class ItemCrawler_FDU extends ItemCrawler
   private DateFormat timeFormatFDU = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
   
   public ItemCrawler_FDU(Queue<ArticleInfo> queue, String bbsUrlXml) {
-    super(queue, bbsUrlXml);
+    super(queue, bbsUrlXml, true);
   }
   
   protected String getBBSType()

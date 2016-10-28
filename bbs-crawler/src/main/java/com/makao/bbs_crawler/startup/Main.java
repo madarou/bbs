@@ -27,8 +27,8 @@ public class Main
         .build();
       Trigger trigger = TriggerBuilder.newTrigger()
         .withIdentity("trigger1", "group1")
-        
-        .withSchedule(CronScheduleBuilder.cronSchedule("0 0,30 0/1 * * ?"))
+         .withSchedule(CronScheduleBuilder.cronSchedule("*/30 * * * * ?"))
+       // .withSchedule(CronScheduleBuilder.cronSchedule("0 0,30 0/1 * * ?"))
         .build();
       scheduler.scheduleJob(job, trigger);
       scheduler.start();

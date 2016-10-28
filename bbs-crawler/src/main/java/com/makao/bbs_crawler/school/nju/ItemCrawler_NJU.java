@@ -37,28 +37,28 @@ public class ItemCrawler_NJU extends ItemCrawler
     List<ArticleInfo> articles = new ArrayList();
     
     Elements tables = doc.getElementsByTag("table");
-    int i; for (Iterator localIterator = tables.iterator(); localIterator.hasNext(); i > 0)
-    {
-      org.jsoup.nodes.Element table = (org.jsoup.nodes.Element)localIterator.next();
-      Elements trItems = table.getElementsByTag("tr");
-      
-      i = trItems.size() - 1;continue;
-      Elements tdItems = trItems.get(i).getElementsByTag("td");
-      if ((tdItems != null) && (tdItems.size() == 6)) {
-        String articelId = tdItems.get(0).html();
-        
-        Matcher matcher = this.pattern.matcher(articelId);
-        if (matcher.find()) {
-          String articleTime = this.year.format(new Date()) + " " + tdItems.get(3).html();
-          String articleTitle = tdItems.get(4).child(0).html().substring(2);
-          String articleUrl = articleBaseUrl + tdItems.get(4).child(0).attr("href");
-          
-          Date articleDate = this.njuFormat.parse(articleTime);
-          articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articelId, isSingle));
-        }
-      }
-      i--;
-    }
+//    int i; for (Iterator localIterator = tables.iterator(); localIterator.hasNext(); i > 0)
+//    {
+//      org.jsoup.nodes.Element table = (org.jsoup.nodes.Element)localIterator.next();
+//      Elements trItems = table.getElementsByTag("tr");
+//      
+//      i = trItems.size() - 1;continue;
+//      Elements tdItems = trItems.get(i).getElementsByTag("td");
+//      if ((tdItems != null) && (tdItems.size() == 6)) {
+//        String articelId = tdItems.get(0).html();
+//        
+//        Matcher matcher = this.pattern.matcher(articelId);
+//        if (matcher.find()) {
+//          String articleTime = this.year.format(new Date()) + " " + tdItems.get(3).html();
+//          String articleTitle = tdItems.get(4).child(0).html().substring(2);
+//          String articleUrl = articleBaseUrl + tdItems.get(4).child(0).attr("href");
+//          
+//          Date articleDate = this.njuFormat.parse(articleTime);
+//          articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articelId, isSingle));
+//        }
+//      }
+//      i--;
+//    }
     
     return articles;
   }
