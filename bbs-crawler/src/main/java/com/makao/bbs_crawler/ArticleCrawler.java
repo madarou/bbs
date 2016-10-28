@@ -65,6 +65,12 @@ public abstract class ArticleCrawler implements Runnable
     this.sleeptime = sleeptime;
   }
   
+  public ArticleCrawler(Queue<ArticleInfo> queue, Configure.SleepTime sleeptime, boolean ssl) {
+	    this.crawler = new Crawler(ssl);
+	    this.queue = queue;
+	    this.sleeptime = sleeptime;
+	  }
+  
   public void run()
   {
     int queueSize = this.queue.size();
@@ -160,7 +166,12 @@ public abstract class ArticleCrawler implements Runnable
   
   protected abstract String getJobContent(ArticleInfo paramArticleInfo) throws ClientProtocolException, ClassNotFoundException, IOException, InterruptedException;
   
-  private boolean jobPageCrawler(ArticleInfo article)
+  /**
+ * @param article
+ * @return
+ * 
+ */
+private boolean jobPageCrawler(ArticleInfo article)
   {
     boolean fail = false;
     try {
@@ -168,6 +179,7 @@ public abstract class ArticleCrawler implements Runnable
       JobsMapper mapper = (JobsMapper)this.session.getMapper(JobsMapper.class);
       String title = article.getTitle();
       this.logger.info("crawling##" + title);
+      //实际解析一篇帖子的内容
       String content = getJobContent(article);
       if ((content != null) && (!content.isEmpty())) {
         Map para = new HashMap();

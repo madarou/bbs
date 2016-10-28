@@ -25,7 +25,7 @@ public class ArticleCrawler_FDU extends ArticleCrawler
 {
   public ArticleCrawler_FDU(Queue<ArticleInfo> queue, Configure.SleepTime sleeptime)
   {
-    super(queue, sleeptime);
+    super(queue, sleeptime,true);
   }
   
   private String getHtml(ArticleInfo article)
@@ -78,7 +78,11 @@ public class ArticleCrawler_FDU extends ArticleCrawler
     return singleInfo;
   }
   
-  protected String getJobContent(ArticleInfo article)
+  /* (non-Javadoc)
+ * @see com.makao.bbs_crawler.ArticleCrawler#getJobContent(com.makao.bbs_crawler.ArticleInfo)
+ * 实际解析一篇帖子的内容
+ */
+protected String getJobContent(ArticleInfo article)
     throws ClientProtocolException, ClassNotFoundException, IOException, InterruptedException
   {
     String content = null;

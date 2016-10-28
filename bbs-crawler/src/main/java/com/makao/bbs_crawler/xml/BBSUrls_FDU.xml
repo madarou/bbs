@@ -10,26 +10,26 @@
 	-->
 	<bbs-url>
 		<!-- JOB -->
-		<item-url>http://bbs.fudan.edu.cn/bbs/tdoc?bid=431</item-url>
-		<page-base-url>http://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=431&amp;f=</page-base-url>
+		<item-url>https://bbs.fudan.edu.cn/bbs/tdoc?bid=431</item-url>
+		<page-base-url>https://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=431&amp;f=</page-base-url>
 		<single>false</single>
 	</bbs-url>
 	<bbs-url>
 		<!-- ITJOB -->
-		<item-url>http://bbs.fudan.edu.cn/bbs/tdoc?bid=449</item-url>
-		<page-base-url>http://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=449&amp;f=</page-base-url>
+		<item-url>https://bbs.fudan.edu.cn/bbs/tdoc?bid=449</item-url>
+		<page-base-url>https://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=449&amp;f=</page-base-url>
 		<single>false</single>
 	</bbs-url>
 	<bbs-url>
 		<!-- PARTJOB -->
-		<item-url>http://bbs.fudan.edu.cn/bbs/tdoc?bid=40</item-url>
-		<page-base-url>http://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=40&amp;f=</page-base-url>
+		<item-url>https://bbs.fudan.edu.cn/bbs/tdoc?bid=40</item-url>
+		<page-base-url>https://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=40&amp;f=</page-base-url>
 		<single>false</single>
 	</bbs-url>
 	<bbs-url>
 		<!-- CREATION -->
-		<item-url>http://bbs.fudan.edu.cn/bbs/tdoc?bid=123</item-url>
-		<page-base-url>http://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=123&amp;f=</page-base-url>
+		<item-url>https://bbs.fudan.edu.cn/bbs/tdoc?bid=123</item-url>
+		<page-base-url>https://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=123&amp;f=</page-base-url>
 		<single>false</single>
 	</bbs-url>
 </bbs-url-list>

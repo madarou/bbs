@@ -36,14 +36,18 @@ public class ItemCrawler_FDU extends ItemCrawler
   {
     String html = Logon.fudanCheckLogon(this.cralwer, url);
     if ((html == null) || (html.isEmpty())) {
-      this.logger.debug("Sleeping 10 seconds to try to get html");
+      this.logger.info("Sleeping 10 seconds to try to get html");
       Thread.sleep(10000L);
       html = this.cralwer.getHtml(url);
     }
     return this.cralwer.getHtml(url);
   }
   
-  protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl, boolean isSingle) throws Exception
+  /* (non-Javadoc)
+ * @see com.makao.bbs_crawler.ItemCrawler#getArticleInfos(org.jsoup.nodes.Document, java.lang.String, boolean)
+ * 解析一个帖子列表，将里面的id，time等取出
+ */
+protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl, boolean isSingle) throws Exception
   {
     List<ArticleInfo> articles = new ArrayList();
     

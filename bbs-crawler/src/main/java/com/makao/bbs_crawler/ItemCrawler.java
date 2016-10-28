@@ -26,6 +26,10 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jsoup.Jsoup;
 
+/**
+ * @author ZYR
+ *
+ */
 public abstract class ItemCrawler implements Runnable
 {
   protected Crawler cralwer;
@@ -90,11 +94,17 @@ public abstract class ItemCrawler implements Runnable
     return !BlackList.filter(bbstype, title);
   }
   
-  protected boolean withinTimeRange(Date now, Date date)
+  /**
+ * @param now
+ * @param date
+ * @return
+ * 时间差在昨天到明天之间
+ */
+protected boolean withinTimeRange(Date now, Date date)
   {
     Calendar cal = Calendar.getInstance();
     cal.setTime(now);
-    cal.add(5, -1);
+    cal.add(5, -1); //等同于cal.add(Calendar.DAY_OF_MONTH, -1);即天数减一天
     Date yesterday = cal.getTime();
     cal.setTime(now);
     cal.add(5, 1);
@@ -173,7 +183,7 @@ public abstract class ItemCrawler implements Runnable
   {
     try
     {
-      parseBBSUrlXml();
+      parseBBSUrlXml();//将xml中当前学校的找工作板块的url加入到bbsURLs
       for (BBSUrl item : this.bbsURLs) {
         extrctItem(item);
       }
@@ -197,7 +207,16 @@ public abstract class ItemCrawler implements Runnable
   
   protected void extrctItemInit() {}
   
-  private void extrctItem(BBSUrl bbsUrl)
+  /**
+ * @param bbsUrl
+ * @throws ClientProtocolException
+ * @throws ClassNotFoundException
+ * @throws IOException
+ * @throws InterruptedException
+ * 根据一个bbs-url，通过列表根url，获取文章列表，放进ArticleInfo的列表中，
+ * 此时已经根据每个文章的url+id组装好了每个文章的url，后面依此爬取详细内容
+ */
+private void extrctItem(BBSUrl bbsUrl)
     throws ClientProtocolException, ClassNotFoundException, IOException, InterruptedException
   {
     String itemUrl = bbsUrl.getItemUrl();
@@ -221,6 +240,17 @@ public abstract class ItemCrawler implements Runnable
       boolean hasItems = true;
       while (hasItems)
       {
+    	/*
+    	 * getItemHtml(itemUrl)请求获取到一页的文章列表，如下。然后获取到其中的满足近期发布的且没有被爬过的帖子的id放进去，后面用page-base-url+id号怕取帖子详情
+    	 * <?xml version="1.0" encoding="gb18030"?>
+			<?xml-stylesheet type="text/xsl" href="../xsl/bbs.xsl?v20150923"?>
+			<bbsdoc><session m='t'><p>lt  </p><u>maxiaohong</u><f></f></session><po nore='1' m='+' owner='qcwysh' time= '2016-10-28T14:13:17' id='3098825608663138779'>拜尔斯道夫中国区2017校园招募计划</po>
+			<po nore='1' m='+' owner='qcwysh' time= '2016-10-28T14:13:45' id='3098825668306141660'>爱财集团公司诚邀 2017届校园应届毕业生加盟！</po>
+			<po nore='1' m='+' owner='vivien' time= '2016-10-28T14:20:32' id='3098826522432111080'>【招聘】美国上市公司 消费者市场研究部</po>
+			<brd title='Job_Plaza' desc='求职广场' bm='' total='35825' start='35806' bid='431' page='20' link='t'/>
+			</bbsdoc>
+    	 * 
+    	 * */
         String html = getItemHtml(itemUrl);
         
         org.jsoup.nodes.Document doc = Jsoup.parse(html);
@@ -229,6 +259,7 @@ public abstract class ItemCrawler implements Runnable
         
         if (allNodes.size() != 0) {
           for (ArticleInfo node : allNodes) {
+        	  //帖子发布日期在昨天到明天的一天以内则可以
             if (withinTimeRange(now, node.getDate())) {
               if ((!isDuplicate(dbItemsSet, node.getDate(), node.getTitle())) && 
                 (validate(node.getTitle(), getBBSType()))) {
@@ -245,12 +276,14 @@ public abstract class ItemCrawler implements Runnable
           hasItems = false;
         }
         
+        //获取进入下一个列表页的url，各个网站情况不同
         String nextUrl = getNextURL(doc, itemBaseUrl);
+        //如果当前页面列表所有文章都加进了this.queue，即hasItems为真，则说明下一个列表页可能还有，再进入下一个列表页
         if ((hasItems) && (nextUrl != null) && (!nextUrl.isEmpty())) {
           itemUrl = nextUrl;
-          this.logger.info("next item url: " + itemUrl);
+          this.logger.info("prepare to go to next item list url: " + itemUrl);
         } else {
-          this.logger.info(getClass() + " job item analysis finished...");
+          this.logger.info(getClass() + " job item list analysis finished...no more item list currently");
           break;
         }
         

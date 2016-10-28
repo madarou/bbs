@@ -63,17 +63,17 @@ public class ItemCrawlerJob
     
     ExecutorService executor = Executors.newFixedThreadPool(threadcount);
     executor.execute(new ItemCrawler_FDU(itemqueue_fdu, "com/makao/bbs_crawler/xml/BBSUrls_FDU.xml"));
-    executor.execute(new ItemCrawler_SJ(itemqueue_sj, "com/makao/bbs_crawler/xml/BBSUrls_SJ.xml"));
-    executor.execute(new ItemCrawler_PKU(itemqueue_pku, "com/makao/bbs_crawler/xml/BBSUrls_PKU.xml"));
-    executor.execute(new ItemCrawler_QH(itemqueue_qinghua, "com/makao/bbs_crawler/xml/BBSUrls_QH.xml"));
-    executor.execute(new ItemCrawler_NJU(itemqueue_nju, "com/makao/bbs_crawler/xml/BBSUrls_NJU.xml"));
-    executor.execute(new ItemCrawler_BYR(itemqueue_byr, "com/makao/bbs_crawler/xml/BBSUrls_BYR.xml"));
-    executor.execute(new ItemCrawler_ECNU(itemqueue_ecnu, "com/makao/bbs_crawler/xml/BBSUrls_ECNU.xml"));
-    executor.execute(new ItemCrawler_ECUST(itemqueue_ecust, "com/makao/bbs_crawler/xml/BBSUrls_ECUST.xml"));
+//    executor.execute(new ItemCrawler_SJ(itemqueue_sj, "com/makao/bbs_crawler/xml/BBSUrls_SJ.xml"));
+//    executor.execute(new ItemCrawler_PKU(itemqueue_pku, "com/makao/bbs_crawler/xml/BBSUrls_PKU.xml"));
+//    executor.execute(new ItemCrawler_QH(itemqueue_qinghua, "com/makao/bbs_crawler/xml/BBSUrls_QH.xml"));
+//    executor.execute(new ItemCrawler_NJU(itemqueue_nju, "com/makao/bbs_crawler/xml/BBSUrls_NJU.xml"));
+//    executor.execute(new ItemCrawler_BYR(itemqueue_byr, "com/makao/bbs_crawler/xml/BBSUrls_BYR.xml"));
+//    executor.execute(new ItemCrawler_ECNU(itemqueue_ecnu, "com/makao/bbs_crawler/xml/BBSUrls_ECNU.xml"));
+//    executor.execute(new ItemCrawler_ECUST(itemqueue_ecust, "com/makao/bbs_crawler/xml/BBSUrls_ECUST.xml"));
     
     executor.shutdown();
     try {
-      executor.awaitTermination(1000L, TimeUnit.MINUTES);
+      executor.awaitTermination(1000L, TimeUnit.DAYS);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

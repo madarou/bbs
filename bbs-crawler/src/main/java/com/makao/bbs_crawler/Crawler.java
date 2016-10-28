@@ -37,7 +37,7 @@ public class Crawler
 	  //this.httpclient = new DefaultHttpClient(new ThreadSafeClientConnManager());
 	  this.httpclient = WebClientDevWrapper.wrapClient(new DefaultHttpClient(new ThreadSafeClientConnManager()));  
     if (Configure.configure.getUseproxy().equals("true")) {
-      HttpHost host = new HttpHost(Configure.configure.getProxy(), Configure.configure.getPort(), "http");
+      HttpHost host = new HttpHost(Configure.configure.getProxy(), 443, "https");
       this.httpclient.getParams().setParameter("http.route.default-proxy", host);
     }
     this.httpclient.getParams().setParameter("http.connection.timeout", Integer.valueOf(60000));

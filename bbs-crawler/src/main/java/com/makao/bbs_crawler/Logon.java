@@ -29,7 +29,7 @@ public class Logon
   {
     httpclient.getParams().setParameter("http.protocol.version", 
       HttpVersion.HTTP_1_0);
-    HttpPost httpPost = new HttpPost("http://bbs.fudan.edu.cn/bbs/login");
+    HttpPost httpPost = new HttpPost("https://bbs.fudan.edu.cn/bbs/login");
     httpPost.addHeader("Content-Type", "application/x-www-form-urlencoded");
     java.util.List<NameValuePair> nvps = new ArrayList();
     nvps.add(new BasicNameValuePair("id", Configure.configure.getFudan_id()));
