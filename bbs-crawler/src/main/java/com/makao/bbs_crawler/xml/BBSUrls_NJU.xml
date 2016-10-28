@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="NJU" page-base-url="http://bbs.nju.edu.cn/">
+	<!--
+	<bbs-url>
+		<!- SINGLE 
+		<item-url>http://bbs.fudan.edu.cn/bbs/tdoc?bid=120</item-url>
+		<page-base-url>http://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=120&amp;f=</page-base-url>
+		<single>true</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<!-- Job Express -->
+		<item-url>http://bbs.nju.edu.cn/bbstdoc?board=JobExpress</item-url>
+		<single>false</single>
+	</bbs-url>
+	<!-- 
+	<bbs-url>
+		<!- Job And Work 
+		<item-url>http://bbs.nju.edu.cn/bbstdoc?board=JobAndWork</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!- Part Time Job 
+		<item-url>http://bbs.nju.edu.cn/bbstdoc?board=PartTimeJob</item-url>
+		<single>false</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<!-- Intern -->
+		<item-url>http://bbs.nju.edu.cn/bbstdoc?board=Intern</item-url>
+		<single>false</single>
+	</bbs-url>
+</bbs-url-list>

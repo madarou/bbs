@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs.mapper.JobsMapper">
+  <insert id="addJobs" parameterType="Map">
+  	INSERT INTO job(ID,SOURCE,TITLE,CONTENT,TIME,JOBTYPE)
+  	VALUES(#{id},#{source},#{title},#{content},#{date},#{jobType})
+  </insert>
+  <select id="getDbJobList" resultType="HashMap" parameterType="Map">
+	select DATE_FORMAT(time, '%Y-%m-%d') as date, title
+	from job
+	where source=#{source} and time >= (NOW() - INTERVAL 1 DAY)
+  </select>
+</mapper>

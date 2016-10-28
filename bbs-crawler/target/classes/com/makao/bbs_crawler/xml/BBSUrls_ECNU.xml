@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="ECNU" page-base-url="http://bbs.iecnu.com/">
+	<!--
+	<bbs-url>
+		<!- SINGLE -
+		<item-url>http://www.newsmth.net/nForum/board/PieLove</item-url>
+		<single>true</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<item-url>http://bbs.iecnu.com/forum-134-1.html</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<item-url>http://bbs.iecnu.com/forum-135-1.html</item-url>
+		<single>false</single>
+	</bbs-url>
+</bbs-url-list>

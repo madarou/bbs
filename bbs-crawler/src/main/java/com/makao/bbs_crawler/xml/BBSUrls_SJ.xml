@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="SJ" page-base-url="http://bbs.sjtu.cn/">
+	<!--
+	<bbs-url>
+		<!- SINGLE -
+		<item-url>http://bbs.sjtu.cn/bbstdoc,board,LoveBridge.html</item-url>
+		<single>true</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<!-- Part Time --> 
+		<item-url>http://bbs.sjtu.cn/bbstdoc,board,PartTime.html</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- IT Career -->
+		<item-url>http://bbs.sjtu.cn/bbstdoc,board,ITCareer.html</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- Job Info -->
+		<item-url>http://bbs.sjtu.cn/bbstdoc,board,JobInfo.html</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- Job Forum -->
+		<item-url>http://bbs.sjtu.cn/bbstdoc,board,JobForum.html</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- ENTERPRENEUR -->
+		<item-url>http://bbs.sjtu.cn/bbstdoc,board,Entrepreneur.html</item-url>
+		<single>false</single>
+	</bbs-url>
+</bbs-url-list>

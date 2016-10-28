@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blacklist>
+	<list name="BJTU">
+		<rules>
+		</rules>
+	</list>
+	<list name="BYR">
+		<rules>
+		</rules>
+	</list>
+	<list name="ECNU">
+		<rules>
+		</rules>
+	</list>
+	<list name="ECUST">
+		<rules>
+		</rules>
+	</list>
+	<list name="FDU">
+		<rules>
+			<rule>发文权限</rule>
+		</rules>
+	</list>
+	<list name="NJU">
+		<rules>
+		</rules>
+	</list>
+	<list name="PKU">
+		<rules>
+			<rule>恢复</rule>
+			<rule>封禁</rule>
+		</rules>
+	</list>
+	<list name="QINGHUA">
+		<rules>
+		</rules>
+	</list>
+	<list name="SJ">
+		<rules>
+			<rule>发文权限</rule>
+		</rules>
+	</list>
+	<list name="ALL">
+		<rules>
+			<rule>答案</rule>
+			<rule>家教</rule>
+			<rule>教师资格</rule>
+			<rule>权限</rule>
+			<rule>逾期</rule>
+			<rule>信用记录</rule>
+			<rule>成绩.*修改</rule>
+			<rule>\d{2,}年.*考试</rule>
+			<rule>办理</rule>
+			<rule>不良.*记录</rule>
+			<rule>修改.*百度知道</rule>
+			<rule> 百度知道$</rule>
+			<rule>找富婆包养男人</rule>
+			<rule>Q\d{8,}</rule>
+			<rule>是多少</rule>
+			<rule>是什么</rule>
+			<rule>发票</rule>
+			<rule>1[3|5|8]\d{9}</rule>	<!-- 手机号 -->
+			<rule>怎么办$</rule>
+			<rule>学位证书</rule>
+			<rule>高仿香烟</rule>
+		</rules>
+	</list>
+</blacklist>

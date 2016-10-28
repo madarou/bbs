@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="PKU" page-base-url="http://www.bdwm.net/bbs/">
+	<!--
+	<bbs-url>
+		<!- SINGLE 
+		<item-url>http://bbs.pku.edu.cn/bbs/bbstop.php?board=PieBridge</item-url>
+		<single>true</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<!-- JOBIT -->
+		<item-url>http://www.bdwm.net/bbs/bbstop.php?board=Job_IT</item-url>
+		<single>false</single>
+	</bbs-url>
+	<!--
+	<bbs-url>
+		<!- JOB -
+		<item-url>http://www.bdwm.net/bbs/bbstop.php?board=Job</item-url>
+		<single>false</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<!-- JOBPOST -->
+		<item-url>http://www.bdwm.net/bbs/bbstop.php?board=Job_Post</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- INNOVATION -->
+		<item-url>http://www.bdwm.net/bbs/bbstop.php?board=Innovation</item-url>
+		<single>false</single>
+	</bbs-url>
+</bbs-url-list>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="BJTU" page-base-url="http://zhixing.bjtu.edu.cn/">
+	<!--
+	<bbs-url>
+		<!- SINGLE -
+		<item-url>http://www.newsmth.net/nForum/board/PieLove</item-url>
+		<single>true</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<!-- 招聘信息 -->
+		<item-url>http://zhixing.bjtu.edu.cn/forum-623-1.html</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- 实习兼职 -->
+		<item-url>http://zhixing.bjtu.edu.cn/forum-624-1.html</item-url>
+		<single>false</single>
+	</bbs-url>
+</bbs-url-list>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="SJ" page-base-url="http://www.newsmth.net">
+	<!--
+	<bbs-url>
+		<!- SINGLE -
+		<item-url>http://www.newsmth.net/nForum/board/PieLove</item-url>
+		<single>true</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Career_Campus</item-url>
+		<single>false</single>
+	</bbs-url>
+	<!--
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/ParttimeJobPost</item-url>
+		<single>false</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/ExecutiveSearch</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Career_Investment</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Career_PHD</item-url>
+		<single>false</single>
+	</bbs-url>
+	<!--
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Career_Plaza</item-url>
+		<single>false</single>
+	</bbs-url>
+	-->
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Career_Upgrade</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Intern</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/ITjob</item-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<item-url>http://www.newsmth.net/nForum/board/Entrepreneur</item-url>
+		<single>false</single>
+	</bbs-url>
+</bbs-url-list>
