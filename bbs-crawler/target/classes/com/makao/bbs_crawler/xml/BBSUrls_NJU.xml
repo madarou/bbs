@@ -11,6 +11,7 @@
 	<bbs-url>
 		<!-- Job Express -->
 		<item-url>http://bbs.nju.edu.cn/bbstdoc?board=JobExpress</item-url>
+		<page-base-url>http://bbs.nju.edu.cn/</page-base-url>
 		<single>false</single>
 	</bbs-url>
 	<!-- 
