@@ -93,6 +93,7 @@ protected String getJobContent(ArticleInfo article)
 		  if(script!=null){
 			  String ct = script.html();
 			  content = ct.substring(ct.indexOf("prints(")+8, ct.length()-22);
+			  content = content.replaceAll("\\\\n", "<br>").replaceAll("\\\\/", "\\/");
 		  }
 	  }
     return content;
@@ -108,6 +109,7 @@ protected String getJobContent(ArticleInfo article)
 	  System.out.println(timeFormatCD.format(new Date((1478058546L+8*3600) * 1000)));
 	  File input = new File("C:/Users/ZYR/Desktop/cd_detail.html");
 	  Document doc=null;
+	  String content = null;
 		try {
 			doc = Jsoup.parse(input, "UTF-8");
 		} catch (IOException e) {
@@ -120,7 +122,9 @@ protected String getJobContent(ArticleInfo article)
 			  Element script =scripts.get(2);
 			  if(script!=null){
 				  String ct = script.html();
-				  System.out.println(ct.substring(ct.indexOf("prints(")+7, ct.length()-23));
+				  content = ct.substring(ct.indexOf("prints(")+8, ct.length()-22);
+				  content = content.replaceAll("\\\\n", "<br>").replaceAll("\\\\/", "\\/");
+				  System.out.println(content);
 			  }
 		  }
 	   

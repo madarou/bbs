@@ -63,7 +63,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 					  if(!articleId.equals(aiticleId2))//川大帖子id和被回复帖子id相同说明是原始贴，如果不相同，说明是回复贴，回复贴直接丢掉
 						  continue;
 					  String articleTime = timeFormatCD.format(new Date((Long.parseLong(innerStrs[4])+8*3600) * 1000));//川大的发帖日期需要转换
-					  String articleTitle = innerStrs[5];
+					  String articleTitle = innerStrs[5].substring(1, innerStrs[5].length()-1);
 					  Date articleDate = this.timeFormatCD.parse(articleTime);
 					  System.out.println(articleId+" "+articleTime+" "+articleTitle);
 					  if(!Utils.withinTimeRange(new Date(), articleDate))

@@ -46,6 +46,7 @@ public abstract class ArticleCrawler implements Runnable
     
     contentPart.add(java.util.regex.Pattern.compile("实习生"));
     contentPart.add(java.util.regex.Pattern.compile("兼职"));
+    contentPart.add(java.util.regex.Pattern.compile("日薪"));
     contentPart.add(java.util.regex.Pattern.compile("\\bintern\\b", 2));
     contentPart.add(java.util.regex.Pattern.compile("\\binternship\\b", 2));
     contentPart.add(java.util.regex.Pattern.compile("\\d天以上"));
