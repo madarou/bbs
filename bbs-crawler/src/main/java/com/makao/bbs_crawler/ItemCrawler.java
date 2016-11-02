@@ -252,7 +252,6 @@ private void extrctItem(BBSUrl bbsUrl)
     	 * 
     	 * */
         String html = getItemHtml(itemUrl);
-        
         org.jsoup.nodes.Document doc = Jsoup.parse(html);
         this.logger.debug(doc.html());
         List<ArticleInfo> allNodes = getArticleInfos(doc, articleBaseUrl, isSingle);

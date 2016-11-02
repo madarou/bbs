@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="CD">
+<!-- 	<bbs-url>
+		JOB
+		<item-url>https://bbs.fudan.edu.cn/bbs/tdoc?bid=431</item-url>
+		<page-base-url>https://bbs.fudan.edu.cn/bbs/tcon?new=1&amp;bid=431&amp;f=</page-base-url>
+		<single>false</single>
+	</bbs-url> -->
+	<bbs-url>
+		<!-- PARTJOB -->
+		<item-url>http://www.lsxk.org/bbsdoc.php?board=Part_timeJob</item-url>
+		<page-base-url>http://www.lsxk.org/bbscon.php?bid=233&amp;id=</page-base-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- FULLJOB -->
+		<item-url>http://www.lsxk.org/bbsdoc.php?board=JobInformation</item-url>
+		<page-base-url>http://www.lsxk.org/bbscon.php?bid=344&amp;id=</page-base-url>
+		<single>false</single>
+	</bbs-url>
+	<bbs-url>
+		<!-- SHIXI JOB -->
+		<item-url>http://www.lsxk.org/bbsdoc.php?board=Practice_Job</item-url>
+		<page-base-url>http://www.lsxk.org/bbscon.php?bid=345&amp;id=</page-base-url>
+		<single>false</single>
+	</bbs-url>
+
+</bbs-url-list>

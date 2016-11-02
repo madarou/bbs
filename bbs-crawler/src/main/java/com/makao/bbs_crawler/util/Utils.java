@@ -3,7 +3,10 @@ package com.makao.bbs_crawler.util;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utils
 {
@@ -72,11 +75,51 @@ public class Utils
     return monthFormat.format(date);
   }
   
+  /**
+ * @param type
+ * @param expression
+ * @return
+ * 获取type(ddddd)中括号中的内容，贪婪匹配
+ */
+public static String getContent(String type,String expression){  
+      String regStr = type+"\\((.*)\\)";  
+      Pattern pattern = Pattern.compile(regStr);  
+      Matcher matcher = pattern.matcher(expression);  
+      while(matcher.find()){  
+          return matcher.group(1);  
+      }  
+      return null;  
+  }  
+
+/**
+* @param now
+* @param date
+* @return
+* 时间差在昨天到明天之间
+*/
+public static boolean withinTimeRange(Date now, Date date)
+{
+  Calendar cal = Calendar.getInstance();
+  cal.setTime(now);
+  cal.add(5, -1); //等同于cal.add(Calendar.DAY_OF_MONTH, -1);即天数减一天
+  Date yesterday = cal.getTime();
+  cal.setTime(now);
+  cal.add(5, 1);
+  Date tomorrow = cal.getTime();
+  
+  return (date.compareTo(yesterday) >= 0) && (
+    date.compareTo(tomorrow) <= 0);
+}
+  
   public static void main(String[] args)
   {
     java.util.Date date = new java.util.Date();
     System.out.println(date);
     System.out.println(toMonthFormat(date));
     System.out.println(isYesterday(new java.util.Date()));
+    
+    String expression = "<!--[CDATA[formRelated(CreatorUserLogin.(Person).CompanyDepartment.Location.Organization)]]-->";  
+    String formRelatedType = "formRelated";  
+    System.out.println(getContent(formRelatedType,expression));  
   }
 }
