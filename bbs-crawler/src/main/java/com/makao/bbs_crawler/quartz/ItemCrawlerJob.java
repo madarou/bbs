@@ -109,9 +109,9 @@ public class ItemCrawlerJob
     {
       executor.awaitTermination(45L, TimeUnit.MINUTES);
       
-      Thread fullTextThread = new Thread(new BuildFulltextIndex());
+     /* Thread fullTextThread = new Thread(new BuildFulltextIndex());
       fullTextThread.start();
-      fullTextThread.join();
+      fullTextThread.join();*/
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
