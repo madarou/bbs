@@ -37,6 +37,7 @@ public abstract class ArticleCrawler implements Runnable
     titlePart.add(java.util.regex.Pattern.compile("实习"));
     titlePart.add(java.util.regex.Pattern.compile("兼职"));
     titlePart.add(java.util.regex.Pattern.compile("家教"));
+    titlePart.add(java.util.regex.Pattern.compile("日薪"));
     titlePart.add(java.util.regex.Pattern.compile("\\bintern\\b", 2));
     titlePart.add(java.util.regex.Pattern.compile("\\binternship\\b", 2));
     
@@ -47,6 +48,7 @@ public abstract class ArticleCrawler implements Runnable
     contentPart.add(java.util.regex.Pattern.compile("实习生"));
     contentPart.add(java.util.regex.Pattern.compile("兼职"));
     contentPart.add(java.util.regex.Pattern.compile("日薪"));
+    contentPart.add(java.util.regex.Pattern.compile("/天"));
     contentPart.add(java.util.regex.Pattern.compile("\\bintern\\b", 2));
     contentPart.add(java.util.regex.Pattern.compile("\\binternship\\b", 2));
     contentPart.add(java.util.regex.Pattern.compile("\\d天以上"));
@@ -276,5 +278,8 @@ private boolean jobPageCrawler(ArticleInfo article)
     System.out.println(getJobType(" ", "没有实习经验怎么办"));
     System.out.println(getJobType(" ", "实习招聘"));
     System.out.println(getJobType(" ", "校园招聘，以及实习生"));
+    
+    System.out.println(getJobType(" ", "/天"));
+    System.out.println(getJobType(" ", "日薪"));
   }
 }
