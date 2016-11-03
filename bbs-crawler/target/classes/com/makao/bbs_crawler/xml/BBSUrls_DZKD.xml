@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="DZKD">
+	<bbs-url>
+		<!-- FULLJOB -->
+		<item-url>http://www.uestcbbs.com/cxz.asp?rd=7&amp;bd=71</item-url>
+		<page-base-url>http://www.uestcbbs.com/showbbs.asp?bd=71&amp;id=</page-base-url>
+		<single>false</single>
+	</bbs-url>
+
+</bbs-url-list>
