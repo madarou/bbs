@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="CDLG">
+	<bbs-url>
+		<!-- FULLJOB -->
+		<item-url>http://cdut.myubbs.com/forum.php?mod=forumdisplay&amp;fid=80&amp;filter=typeid&amp;typeid=82</item-url>
+		<page-base-url>http://cdut.myubbs.com/forum.php?mod=viewthread&amp;tid=</page-base-url>
+		<single>false</single>
+	</bbs-url>
+
+</bbs-url-list>

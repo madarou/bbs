@@ -8,6 +8,8 @@ import com.makao.bbs_crawler.school.byr.ArticleCrawler_BYR;
 import com.makao.bbs_crawler.school.byr.ItemCrawler_BYR;
 import com.makao.bbs_crawler.school.cd.ArticleCrawler_CD;
 import com.makao.bbs_crawler.school.cd.ItemCrawler_CD;
+import com.makao.bbs_crawler.school.cdlg.ArticleCrawler_CDLG;
+import com.makao.bbs_crawler.school.cdlg.ItemCrawler_CDLG;
 import com.makao.bbs_crawler.school.dzkd.ArticleCrawler_DZKD;
 import com.makao.bbs_crawler.school.dzkd.ItemCrawler_DZKD;
 import com.makao.bbs_crawler.school.ecnu.ArticleCrawler_ECNU;
@@ -65,16 +67,18 @@ public class ItemCrawlerJob
     Queue<ArticleInfo> itemqueue_bjtu = new LinkedList();
     Queue<ArticleInfo> itemqueue_cd = new LinkedList();
     Queue<ArticleInfo> itemqueue_dzkd = new LinkedList();
+    Queue<ArticleInfo> itemqueue_cdlg = new LinkedList();
     int threadcount = Configure.configure.getThreadcount();
     
     ExecutorService executor = Executors.newFixedThreadPool(threadcount);
-    executor.execute(new ItemCrawler_FDU(itemqueue_fdu, "com/makao/bbs_crawler/xml/BBSUrls_FDU.xml"));
-    executor.execute(new ItemCrawler_SJ(itemqueue_sj, "com/makao/bbs_crawler/xml/BBSUrls_SJ.xml"));
-    executor.execute(new ItemCrawler_PKU(itemqueue_pku, "com/makao/bbs_crawler/xml/BBSUrls_PKU.xml"));
-    executor.execute(new ItemCrawler_QH(itemqueue_qinghua, "com/makao/bbs_crawler/xml/BBSUrls_QH.xml"));
-    executor.execute(new ItemCrawler_NJU(itemqueue_nju, "com/makao/bbs_crawler/xml/BBSUrls_NJU.xml"));
-    executor.execute(new ItemCrawler_CD(itemqueue_cd, "com/makao/bbs_crawler/xml/BBSUrls_CD.xml"));
-    executor.execute(new ItemCrawler_DZKD(itemqueue_dzkd, "com/makao/bbs_crawler/xml/BBSUrls_DZKD.xml"));
+//    executor.execute(new ItemCrawler_FDU(itemqueue_fdu, "com/makao/bbs_crawler/xml/BBSUrls_FDU.xml"));
+//    executor.execute(new ItemCrawler_SJ(itemqueue_sj, "com/makao/bbs_crawler/xml/BBSUrls_SJ.xml"));
+//    executor.execute(new ItemCrawler_PKU(itemqueue_pku, "com/makao/bbs_crawler/xml/BBSUrls_PKU.xml"));
+//    executor.execute(new ItemCrawler_QH(itemqueue_qinghua, "com/makao/bbs_crawler/xml/BBSUrls_QH.xml"));
+//    executor.execute(new ItemCrawler_NJU(itemqueue_nju, "com/makao/bbs_crawler/xml/BBSUrls_NJU.xml"));
+//    executor.execute(new ItemCrawler_CD(itemqueue_cd, "com/makao/bbs_crawler/xml/BBSUrls_CD.xml"));
+//    executor.execute(new ItemCrawler_DZKD(itemqueue_dzkd, "com/makao/bbs_crawler/xml/BBSUrls_DZKD.xml"));
+    executor.execute(new ItemCrawler_CDLG(itemqueue_cdlg, "com/makao/bbs_crawler/xml/BBSUrls_CDLG.xml"));
 //    executor.execute(new ItemCrawler_BYR(itemqueue_byr, "com/makao/bbs_crawler/xml/BBSUrls_BYR.xml"));//没有账号密码
 //    executor.execute(new ItemCrawler_ECNU(itemqueue_ecnu, "com/makao/bbs_crawler/xml/BBSUrls_ECNU.xml"));//网络差，connection time out
 //    executor.execute(new ItemCrawler_ECUST(itemqueue_ecust, "com/makao/bbs_crawler/xml/BBSUrls_ECUST.xml"));//原网址停用了，新网址http://bbs.myecust.com/需要账号密码
@@ -96,6 +100,7 @@ public class ItemCrawlerJob
     this.logger.info("bjtu size:" + itemqueue_bjtu.size());
     this.logger.info("cd size:" + itemqueue_cd.size());
     this.logger.info("dzkd size:" + itemqueue_dzkd.size());
+    this.logger.info("cdlg size:" + itemqueue_cdlg.size());
     this.logger.info("item crawler job stop....");
     
     executor = Executors.newFixedThreadPool(threadcount);
@@ -106,6 +111,7 @@ public class ItemCrawlerJob
     executor.execute(new ArticleCrawler_NJU(itemqueue_nju, Configure.configure.getSleeptime()));
     executor.execute(new ArticleCrawler_CD(itemqueue_cd, Configure.configure.getSleeptime()));
     executor.execute(new ArticleCrawler_DZKD(itemqueue_dzkd, Configure.configure.getSleeptime()));
+    executor.execute(new ArticleCrawler_CDLG(itemqueue_cdlg, Configure.configure.getSleeptime()));
 //    executor.execute(new ArticleCrawler_BYR(itemqueue_byr, Configure.configure.getSleeptime()));
 //    executor.execute(new ArticleCrawler_ECNU(itemqueue_ecnu, Configure.configure.getSleeptime()));
 //    executor.execute(new ArticleCrawler_ECUST(itemqueue_ecust, Configure.configure.getSleeptime()));
