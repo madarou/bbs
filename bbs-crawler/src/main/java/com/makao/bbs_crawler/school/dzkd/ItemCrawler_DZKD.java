@@ -73,8 +73,8 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 				      }
 				      else
 				    	  continue;
-				      //articleTitle = aItem.html();
-				      articleTitle = new String(aItem.html().getBytes("GB2312"),"UTF-8");
+				      articleTitle = aItem.html();
+				      //articleTitle = new String(aItem.html().getBytes("GB2312"),"UTF-8");
 				  }
 				  else
 					  continue;

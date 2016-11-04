@@ -2,12 +2,17 @@ package com.makao.bbs_crawler;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -52,13 +57,14 @@ public class Crawler
     InputStream instream = null;
     HttpResponse response = this.httpclient.execute(httpget);
     HttpEntity entity = response.getEntity();
-    
     String result = "";
     StringWriter writer = new StringWriter();
     if (entity != null) {
-      String charset = EntityUtils.getContentCharSet(entity);
+      //String charset = EntityUtils.getContentCharSet(entity);
+      String charset = getContentCharSet(entity,url);
       instream = entity.getContent();
-      IOUtils.copy(instream, writer, charset);
+      InputStreamReader isr = new InputStreamReader(instream,charset);
+      IOUtils.copy(isr, writer);
       result = writer.toString();
       
       httpget.abort();
@@ -99,6 +105,41 @@ public class Crawler
     httpget.setHeader("User-Agent", 
       "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.126 Safari/535.1");
     this.httpclient.execute(httpget);
+  }
+  
+  /** 
+   * 默认编码utf -8 
+   * Obtains character set of the entity, if known. 
+   *  
+   * @param entity must not be null 
+   * @return the character set, or null if not found 
+   * @throws ParseException if header elements cannot be parsed 
+   * @throws IllegalArgumentException if entity is null 
+   */    
+  public static String getContentCharSet(final HttpEntity entity, String url)   
+      throws ParseException {   
+	  
+      if (entity == null) {   
+          throw new IllegalArgumentException("HTTP entity may not be null");   
+      }
+      if(url!=null&&url.indexOf("http://www.uestcbbs.com")>-1){//电子科大的gb2312编码，但有时候获取不到
+    	  return "gb2312";
+      }
+      String charset = null;   
+      if (entity.getContentType() != null) {    
+          HeaderElement values[] = entity.getContentType().getElements();   
+          if (values.length > 0) {   
+              NameValuePair param = values[0].getParameterByName("charset" );   
+              if (param != null) {   
+                  charset = param.getValue();   
+              }   
+          }   
+      }   
+       
+      if(StringUtils.isEmpty(charset)){  
+          charset = "UTF-8";  
+      }  
+      return charset;   
   }
   
   public static void main(String[] args) {
