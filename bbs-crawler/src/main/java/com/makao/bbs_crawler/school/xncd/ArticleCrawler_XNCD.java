@@ -1,4 +1,4 @@
-package com.makao.bbs_crawler.school.cdlg;
+package com.makao.bbs_crawler.school.xncd;
 
 import com.makao.bbs_crawler.ArticleCrawler;
 import com.makao.bbs_crawler.ArticleInfo;
@@ -31,9 +31,9 @@ import org.jsoup.nodes.Node;
 import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
 
-public class ArticleCrawler_CDLG extends ArticleCrawler
+public class ArticleCrawler_XNCD extends ArticleCrawler
 {
-  public ArticleCrawler_CDLG(Queue<ArticleInfo> queue, Configure.SleepTime sleeptime)
+  public ArticleCrawler_XNCD(Queue<ArticleInfo> queue, Configure.SleepTime sleeptime)
   {
     super(queue, sleeptime);
   }
@@ -114,7 +114,7 @@ protected String getJobContent(ArticleInfo article)
   
   protected String getBBSType()
   {
-    return Constants.BBSTYPE.CDLG.toString();
+    return Constants.BBSTYPE.XNCD.toString();
   }
   
   public static void main(String[] args){

@@ -15,7 +15,8 @@ public abstract class Constants
   public static enum BBSTYPE
   {
     FDU("FDU"),  SJ("SJ"),  PKU("PKU"),  QINGHUA("QINGHUA"),  NJU("NJU"),  BYR("BYR"), 
-    ECNU("ECNU"),  ECUST("ECUST"),  BJTU("BJTU"), CD("CD"), DZKD("DZKD"), CDLG("CDLG");
+    ECNU("ECNU"),  ECUST("ECUST"),  BJTU("BJTU"), CD("CD"), DZKD("DZKD"), CDLG("CDLG"),
+    XNCD("XNCD");
     
     private BBSTYPE(String type) { this.type = type; }
     
