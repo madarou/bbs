@@ -31,6 +31,7 @@ public class ItemCrawler_XNCD extends ItemCrawler
 {
   private DateFormat timeFormatXNCD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
   private Pattern pattern = Pattern.compile("^\\S+tid=(\\d+)&\\S+$");
+  private int day = 5;
   public ItemCrawler_XNCD(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
   }
@@ -92,7 +93,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 				  continue;
 			  System.out.println(articleId+" "+articleTitle+" "+articleTime);
 			  Date articleDate = this.timeFormatXNCD.parse(articleTime);
-			  if(!Utils.withinTimeRange(new Date(), articleDate))
+			  if(!Utils.withinTimeRange(new Date(), articleDate,this.day))
 				  continue;
               articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
 		  }

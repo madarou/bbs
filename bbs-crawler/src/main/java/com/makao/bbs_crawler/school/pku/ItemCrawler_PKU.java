@@ -2,6 +2,8 @@ package com.makao.bbs_crawler.school.pku;
 import com.makao.bbs_crawler.ArticleInfo;
 import com.makao.bbs_crawler.ItemCrawler;
 import com.makao.bbs_crawler.util.Constants;
+import com.makao.bbs_crawler.util.Utils;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class ItemCrawler_PKU
   private Pattern pattern = Pattern.compile("[0-9]+");
   private final int delta = 20;
   private int times;
+  private int day=1;
   
   public ItemCrawler_PKU(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
@@ -53,6 +56,9 @@ public class ItemCrawler_PKU
               String articleTitle = tdElements.get(3).child(0).html().substring(2);
               String articleUrl = "http://www.bdwm.net/bbs/" + tdElements.get(3).child(0).attr("href");
               Date articleDate = this.pkuFormat.parse(articleTime);
+              System.out.println(articleId+" "+articleTime+" "+articleTitle);
+    		  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
+    			  continue;
               articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
             }
           }

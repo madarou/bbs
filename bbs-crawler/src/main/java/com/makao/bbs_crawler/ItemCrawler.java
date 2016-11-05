@@ -259,12 +259,13 @@ private void extrctItem(BBSUrl bbsUrl)
         if (allNodes.size() != 0) {
           for (ArticleInfo node : allNodes) {
         	  //帖子发布日期在昨天到明天的一天以内则可以
-            if (withinTimeRange(now, node.getDate())) {
+            //if (withinTimeRange(now, node.getDate())) {//发帖时间是否在限定范围内放到各个getArtcleInfos中根据各自论坛更新的频率去决定
               if ((!isDuplicate(dbItemsSet, node.getDate(), node.getTitle())) && 
                 (validate(node.getTitle(), getBBSType()))) {
                 this.queue.add(node);
               }
-            } else {
+            //}
+            else {
               this.logger.info("time out of range: " + node.getDate() + ", " + node.getTitle());
               hasItems = false;
               break;

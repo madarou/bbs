@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bbs-url-list school="CDLG">
+	<bbs-url>
+		<!-- FULLJOB -->
+		<item-url>http://www.xnuer.com/forum.php?mod=forumdisplay&amp;fid=41&amp;filter=author&amp;orderby=dateline</item-url>
+		<page-base-url>http://www.xnuer.com/forum.php?mod=viewthread&amp;tid=</page-base-url>
+		<single>false</single>
+	</bbs-url>
+
+</bbs-url-list>

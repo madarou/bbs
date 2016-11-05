@@ -16,7 +16,7 @@ public abstract class Constants
   {
     FDU("FDU"),  SJ("SJ"),  PKU("PKU"),  QINGHUA("QINGHUA"),  NJU("NJU"),  BYR("BYR"), 
     ECNU("ECNU"),  ECUST("ECUST"),  BJTU("BJTU"), CD("CD"), DZKD("DZKD"), CDLG("CDLG"),
-    XNCD("XNCD"),CQ("CQ");
+    XNCD("XNCD"),CQ("CQ"),XNDX("XNDX");
     
     private BBSTYPE(String type) { this.type = type; }
     

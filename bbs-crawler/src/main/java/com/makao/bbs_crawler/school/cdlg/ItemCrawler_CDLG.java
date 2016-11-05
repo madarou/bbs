@@ -31,6 +31,7 @@ public class ItemCrawler_CDLG extends ItemCrawler
 {
   private DateFormat timeFormatCDLG = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
   private Pattern pattern = Pattern.compile("^\\S+tid=(\\d+)&\\S+$");
+  private int day = 5;
   public ItemCrawler_CDLG(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
   }
@@ -102,7 +103,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 				  continue;
 			  System.out.println(articleId+" "+articleTitle+" "+articleTime);
 			  Date articleDate = this.timeFormatCDLG.parse(articleTime);
-			  if(!Utils.withinTimeRange(new Date(), articleDate))
+			  if(!Utils.withinTimeRange(new Date(), articleDate,this.day))
 				  continue;
               articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
 		  }

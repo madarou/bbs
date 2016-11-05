@@ -95,16 +95,16 @@ public static String getContent(String type,String expression){
 * @param now
 * @param date
 * @return
-* 时间差在昨天到明天之间
+* 帖子发布时间与当前时间是否在设置的天数day前后差值范围内
 */
-public static boolean withinTimeRange(Date now, Date date)
+public static boolean withinTimeRange(Date now, Date date, int day)
 {
   Calendar cal = Calendar.getInstance();
   cal.setTime(now);
-  cal.add(5, -1); //等同于cal.add(Calendar.DAY_OF_MONTH, -1);即天数减一天
+  cal.add(5, 0-day); //等同于cal.add(Calendar.DAY_OF_MONTH, -1);即天数减一天
   Date yesterday = cal.getTime();
   cal.setTime(now);
-  cal.add(5, 1);
+  cal.add(5, day);
   Date tomorrow = cal.getTime();
   
   return (date.compareTo(yesterday) >= 0) && (

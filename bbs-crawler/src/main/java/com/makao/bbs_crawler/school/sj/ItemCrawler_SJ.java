@@ -3,6 +3,8 @@ package com.makao.bbs_crawler.school.sj;
 import com.makao.bbs_crawler.ArticleInfo;
 import com.makao.bbs_crawler.ItemCrawler;
 import com.makao.bbs_crawler.util.Constants;
+import com.makao.bbs_crawler.util.Utils;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +26,7 @@ public class ItemCrawler_SJ
   
   private SimpleDateFormat sjFormat = new SimpleDateFormat("yyyy MMM d H:mm", Locale.ENGLISH);
   private Pattern pattern = Pattern.compile("[0-9]+");
+  private int day=1;
   
   public ItemCrawler_SJ(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
@@ -56,6 +59,8 @@ public class ItemCrawler_SJ
             String title = urlElement.html().substring(2);
             String time = this.yearFormat.format(new Date()) + " " + tdElements.get(3).html();
             Date date = this.sjFormat.parse(time);
+  		  	if(!Utils.withinTimeRange(new Date(), date, this.day))
+  			  continue;
             articles.add(new ArticleInfo(articleUrl, date, title, id, isSingle));
           }
         }

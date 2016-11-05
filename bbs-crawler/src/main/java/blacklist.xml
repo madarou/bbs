@@ -70,6 +70,12 @@
 			<rule>版面公告</rule>
 		</rules>
 	</list>
+	<list name="XNDX">
+		<rules>
+			<rule>版规</rule>
+			<rule>版面公告</rule>
+		</rules>
+	</list>
 	<list name="ALL">
 		<rules>
 			<rule>答案</rule>

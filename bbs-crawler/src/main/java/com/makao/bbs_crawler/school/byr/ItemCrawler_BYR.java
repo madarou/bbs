@@ -20,6 +20,7 @@ public class ItemCrawler_BYR
 {
   private DateFormat byrFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
   private int pageCount;
+  private int day=1;
   
   public ItemCrawler_BYR(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
@@ -48,6 +49,9 @@ public class ItemCrawler_BYR
           String articleId = urls[(urls.length - 1)];
           articleTime = Utils.dayFormat.format(new Date()) + " " + articleTime;
           Date articleDate = this.byrFormat.parse(articleTime);
+		  System.out.println(articleId+" "+articleTime+" "+articleTitle);
+		  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
+			  continue;
           articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
         }
       }

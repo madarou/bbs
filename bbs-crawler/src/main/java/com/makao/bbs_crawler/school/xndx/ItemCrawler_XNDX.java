@@ -1,4 +1,4 @@
-package com.makao.bbs_crawler.school.cq;
+package com.makao.bbs_crawler.school.xndx;
 
 import com.makao.bbs_crawler.ArticleInfo;
 import com.makao.bbs_crawler.Crawler;
@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -27,18 +28,18 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class ItemCrawler_CQ extends ItemCrawler
+public class ItemCrawler_XNDX extends ItemCrawler
 {
-  private DateFormat timeFormatCQ = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+  private DateFormat timeFormatXNDX = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
   private Pattern pattern = Pattern.compile("^\\S+tid=(\\d+)&\\S+$");
-  private int day = 3;
-  public ItemCrawler_CQ(Queue<ArticleInfo> queue, String bbsUrlXml) {
+  private int day = 5;//帖子允许的天数前后差值
+  public ItemCrawler_XNDX(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
   }
   
   protected String getBBSType()
   {
-    return Constants.BBSTYPE.CQ.getType();
+    return Constants.BBSTYPE.XNDX.getType();
   }
   
   /* (non-Javadoc)
@@ -48,7 +49,7 @@ public class ItemCrawler_CQ extends ItemCrawler
 protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl, boolean isSingle) throws Exception
   {
     List<ArticleInfo> articles = new ArrayList();
-    Elements tables = doc.select("table[summary=forum_218]");
+    Elements tables = doc.select("table[summary=forum_41]");
 	  if(tables!=null && tables.size()>0){
 		  Element table = tables.get(0);
 		  Elements tbodyItems = table.select("tbody[id]");
@@ -62,7 +63,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 				  thItems = tbodyItems.get(i).select("th[class=common]");
 			  if(thItems!=null&&thItems.size()>0){
 				  Element thItem = thItems.get(0);
-				  Elements aItems = thItem.select("a[class=s xst]");
+				  Elements aItems = thItem.select("a[onclick=atarget(this)]");
 				  if(aItems!=null && aItems.size()>0){
 					  Element aItem = aItems.get(0);
 					  Matcher matcher = pattern.matcher(aItem.attr("href"));
@@ -88,11 +89,11 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 					  Element spanItem = spanItems.get(0);
 					  Elements innerSpans = spanItem.select("span[title]");
 					  if(innerSpans!=null&&innerSpans.size()>0){
-						  articleTime = innerSpans.get(0).attr("title")+timeFormatCQ.format(new Date()).substring(10);//加上当前时间
+						  articleTime = innerSpans.get(0).attr("title")+timeFormatXNDX.format(new Date()).substring(10);//加上当前时间
 					  }
 					  else{
-						  String pubdate = spanItem.html();//没有秒数
-						  articleTime = pubdate + ":00";
+						  String pubdate = spanItem.html();//只有日期
+						  articleTime = pubdate + timeFormatXNDX.format(new Date()).substring(10);//加上当前时间
 					  }
 				  }
 				  else
@@ -101,13 +102,12 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 			  else
 				  continue;
 			  System.out.println(articleId+" "+articleTitle+" "+articleTime);
-			  Date articleDate = this.timeFormatCQ.parse(articleTime);
-			  if(!Utils.withinTimeRange(new Date(), articleDate,this.day))
+			  Date articleDate = this.timeFormatXNDX.parse(articleTime);
+			  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
 				  continue;
               articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
 		  }
 	  }
-    
     return articles;
   }
   
@@ -131,6 +131,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 	}
     return nextUrl;
   }
+ 
   
   public static void main(String[] args) throws IOException, ParseException{
 	  DateFormat timeFormatDZKD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
@@ -143,9 +144,9 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
     	  System.out.println(matcher1.group(1));
     	  System.out.println("ddd");
       }
-	  File input = new File("C:/Users/ZYR/Desktop/cq.html");
+	  File input = new File("C:/Users/ZYR/Desktop/xndx.html");
 	  Document doc = Jsoup.parse(input, "UTF-8");
-	  Elements tables = doc.select("table[summary=forum_218]");
+	  Elements tables = doc.select("table[summary=forum_41]");
 	  if(tables!=null && tables.size()>0){
 		  Element table = tables.get(0);
 		  Elements tbodyItems = table.select("tbody[id]");
@@ -159,7 +160,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 				  thItems = tbodyItems.get(i).select("th[class=common]");
 			  if(thItems!=null&&thItems.size()>0){
 				  Element thItem = thItems.get(0);
-				  Elements aItems = thItem.select("a[class=s xst]");
+				  Elements aItems = thItem.select("a[onclick=atarget(this)]");
 				  if(aItems!=null && aItems.size()>0){
 					  Element aItem = aItems.get(0);
 					  Matcher matcher = pattern.matcher(aItem.attr("href"));
@@ -188,8 +189,8 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 						  articleTime = innerSpans.get(0).attr("title")+timeFormatDZKD.format(new Date()).substring(10);//加上当前时间
 					  }
 					  else{
-						  String pubdate = spanItem.html();//没有秒数
-						  articleTime = pubdate + ":00";
+						  String pubdate = spanItem.html();//只有日期
+						  articleTime = pubdate + timeFormatDZKD.format(new Date()).substring(10);//加上当前时间
 					  }
 				  }
 				  else

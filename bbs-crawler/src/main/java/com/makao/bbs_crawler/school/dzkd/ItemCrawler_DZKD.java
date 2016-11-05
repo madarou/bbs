@@ -30,6 +30,7 @@ public class ItemCrawler_DZKD extends ItemCrawler
 {
 	private Pattern pattern = Pattern.compile("^\\S+id=(\\d+)&\\S+$");
   private DateFormat timeFormatDZKD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+  private int day=4;
   
   public ItemCrawler_DZKD(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
@@ -99,7 +100,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 				  continue;
 			  System.out.println(articleId+" "+articleTitle+" "+articleTime);
 			  Date articleDate = this.timeFormatDZKD.parse(articleTime);
-			  if(!Utils.withinTimeRange(new Date(), articleDate))
+			  if(!Utils.withinTimeRange(new Date(), articleDate,this.day))
 				  continue;
               articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
 		  }

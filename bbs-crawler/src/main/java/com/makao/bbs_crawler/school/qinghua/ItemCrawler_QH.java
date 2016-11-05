@@ -19,6 +19,7 @@ public class ItemCrawler_QH extends ItemCrawler
 {
   private DateFormat qinghuaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
   private int pageCount;
+  private int day=1;
   
   public ItemCrawler_QH(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
@@ -48,6 +49,8 @@ public class ItemCrawler_QH extends ItemCrawler
           String[] urls = articleUrl.split("/");
           String articleId = urls[(urls.length - 1)];
           Date articleDate = this.qinghuaFormat.parse(creationTime);
+		  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
+			  continue;
           articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articleId, isSingle));
         } else {
           this.logger.debug("not today, ignore: " + tdElements.get(1).child(0).html());

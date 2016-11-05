@@ -5,6 +5,8 @@ import com.makao.bbs_crawler.Crawler;
 import com.makao.bbs_crawler.ItemCrawler;
 import com.makao.bbs_crawler.Logon;
 import com.makao.bbs_crawler.util.Constants;
+import com.makao.bbs_crawler.util.Utils;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,6 +23,7 @@ import org.jsoup.select.Elements;
 public class ItemCrawler_FDU extends ItemCrawler
 {
   private DateFormat timeFormatFDU = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+  private int day = 1;
   
   public ItemCrawler_FDU(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml, true);
@@ -62,6 +65,9 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
         String articleTitle = itemElem.html().trim();
         
         Date articleDate = this.timeFormatFDU.parse(articleTime);
+        System.out.println(articleId+" "+articleTime+" "+articleTitle);
+		  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
+			  continue;
         articles.add(new ArticleInfo(articleBaseUrl + articleId, articleDate, articleTitle, articleId, isSingle));
       }
     }

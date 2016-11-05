@@ -2,6 +2,8 @@ package com.makao.bbs_crawler.school.nju;
 import com.makao.bbs_crawler.ArticleInfo;
 import com.makao.bbs_crawler.ItemCrawler;
 import com.makao.bbs_crawler.util.Constants;
+import com.makao.bbs_crawler.util.Utils;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +23,7 @@ public class ItemCrawler_NJU extends ItemCrawler
   private Pattern startPattern = Pattern.compile("start=(\\d+)");
   private SimpleDateFormat year = new SimpleDateFormat("yyyy", Locale.ENGLISH);
   private SimpleDateFormat njuFormat = new SimpleDateFormat("yyyy MMM d H:mm", Locale.ENGLISH);
+  private int day=1;
   
   public ItemCrawler_NJU(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
@@ -54,6 +57,9 @@ public class ItemCrawler_NJU extends ItemCrawler
               String articleUrl = articleBaseUrl + tdItems.get(4).child(0).attr("href");
               
               Date articleDate = this.njuFormat.parse(articleTime);
+              System.out.println(articelId+" "+articleTime+" "+articleTitle);
+    		  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
+    			  continue;
               articles.add(new ArticleInfo(articleUrl, articleDate, articleTitle, articelId, isSingle));
             }
           }

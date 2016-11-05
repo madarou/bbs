@@ -29,7 +29,7 @@ import org.jsoup.select.Elements;
 public class ItemCrawler_CD extends ItemCrawler
 {
   private DateFormat timeFormatCD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-  
+  private int day=1;
   public ItemCrawler_CD(Queue<ArticleInfo> queue, String bbsUrlXml) {
     super(queue, bbsUrlXml);
   }
@@ -66,7 +66,7 @@ protected List<ArticleInfo> getArticleInfos(Document doc, String articleBaseUrl,
 					  String articleTitle = innerStrs[5].substring(1, innerStrs[5].length()-1);
 					  Date articleDate = this.timeFormatCD.parse(articleTime);
 					  System.out.println(articleId+" "+articleTime+" "+articleTitle);
-					  if(!Utils.withinTimeRange(new Date(), articleDate))
+					  if(!Utils.withinTimeRange(new Date(), articleDate, this.day))
 						  continue;
 					  articles.add(new ArticleInfo(articleBaseUrl + articleId, articleDate, articleTitle, articleId, isSingle));
 				  }
